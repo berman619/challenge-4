@@ -1,0 +1,95 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #wrapper {
+    margin: 0 auto;
+    max-width: 50%;
+    text-align: center;
+  }
+  
+  #timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+  }
+  
+  #timer::before {
+    content: "Time: ";
+    font-weight: bold;
+  }  
+  
+  #question {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #choices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+      
+  
+  #choices button {
+    margin-bottom: 10px;
+  }
+  
+  #next {
+    display: none;
+  }
+  
+  #title {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  #description {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #scorebox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+
+  #view-high-scores {
+    display: block;
+    position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+    background-color: #fff;
+    color: darkblue;
+    border: 2px solid darkblue;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  #view-high-scores:hover {
+    background-color: darkblue;
+    color: #fff;
+  }
+  
