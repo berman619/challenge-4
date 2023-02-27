@@ -93,19 +93,6 @@ const questions = [
     displayQuestion();
   }
   
-  // event listeners for start button and view high scores button
-  document.addEventListener("DOMContentLoaded", function () {
-    const startButton = document.getElementById("start");
-    const viewScoresButton = document.getElementById("view-high-scores");
-    viewScoresButton.addEventListener("click", function () {
-      const scores = JSON.parse(localStorage.getItem("scores")) || [];
-      showHighScores(scores, "");
-    });
-    startButton.addEventListener("click", function () {
-      startQuiz();
-    });  
-  });
-  
   // function to check if the answer is correct and display result below
   function checkAnswer(index) {
     if (index === questions[currentQuestion].correctAnswer) {
@@ -123,64 +110,75 @@ const questions = [
     }
   }
   
-  // function to end quiz, display the score
-  function endQuiz() {
+// function to end quiz, display the score
+function endQuiz() {
     clearInterval(timerInterval);
     document.getElementById("timer").textContent = "Time's up!";
     document.getElementById("question").textContent = `You got ${score} out of ${questions.length} correct!`;
     document.getElementById("choices").innerHTML = "";
     document.getElementById("message").innerHTML = "";
+    const initialsForm = document.createElement("form");
+    const label = document.createElement("label");
+    label.textContent = "Enter your initials: ";
+    const input = document.createElement("input");
+    input.setAttribute("type", "text");
+    const submitButton = document.createElement("button");
+    submitButton.setAttribute("type", "submit");
+    submitButton.textContent = "Save";
+    initialsForm.appendChild(label);
+    initialsForm.appendChild(input);
+    initialsForm.appendChild(submitButton);
+    document.getElementById("scorebox").appendChild(initialsForm);
+    initialsForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const initials = input.value;
+        scores.push({ initials, score });
+        localStorage.setItem("scores", JSON.stringify(scores));
+        showHighScores(scores, initials);
+        initialsForm.remove();
+    });
 
-// code to display input box for initials/score 
-const initialsForm = document.createElement("form");
-const label = document.createElement("label");
-label.textContent = "Enter your initials: ";
-const input = document.createElement("input");
-input.setAttribute("type", "text");
-const submitButton = document.createElement("button");
-submitButton.setAttribute("type", "submit");
-submitButton.textContent = "Save";
-initialsForm.appendChild(label);
-initialsForm.appendChild(input);
-initialsForm.appendChild(submitButton);
-document.getElementById("scorebox").appendChild(initialsForm);
+    // function to display the list of high scores
+    
+  }
 
-// save score to local storage when form is submitted
-initialsForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const initials = input.value;
-    scores.push({ initials, score });
-    localStorage.setItem("scores", JSON.stringify(scores));
-    showHighScores(scores, initials);
-    initialsForm.remove();
-  });
-
-// function to display the list of high scores
-function showHighScores(scores, initials) {
+  function showHighScores(scores, initials) {
     scores.sort((a, b) => b.score - a.score);
     let highScoresHtml = `<h1>High Scores</h1>`;
     if (scores.length > 0) {
-      highScoresHtml += `
+    highScoresHtml += `
         <ul>
-          ${scores.map(scoreObj => `<li>${scoreObj.initials}: ${scoreObj.score}</li>`).join('')}
+        ${scores.map(scoreObj => `<li>${scoreObj.initials}: ${scoreObj.score}</li>`).join('')}
         </ul>
         <button id="play-again">Play Again</button>
         <button id="clear-scores">Clear Scores</button>
-      `;
+    `;
     } else {
-      highScoresHtml += `
+    highScoresHtml += `
         <p>No high scores</p>
         <button id="play-again">Play Again</button>
-      `;
+    `;
     }
     document.getElementById('wrapper').innerHTML = highScoresHtml;
     // adding event listeners for the play again and clear scores buttons
     document.getElementById('play-again').addEventListener('click', function () {
-      location.reload();
+    location.reload();
     });
     document.getElementById('clear-scores').addEventListener('click', function () {
-      localStorage.removeItem('scores');
-      showHighScores([], '');
+    localStorage.removeItem('scores');
+    showHighScores([], '');
+    });}
+
+// event listeners for start button and view high scores button
+document.addEventListener("DOMContentLoaded", function () {
+    const startButton = document.getElementById("start");
+    const viewScoresButton = document.getElementById("view-high-scores");
+    viewScoresButton.addEventListener("click", function () {
+      const scores = JSON.parse(localStorage.getItem("scores")) || [];
+      showHighScores(scores, "");
     });
-  }
-}
+    startButton.addEventListener("click", function () {
+      startQuiz();
+    });  
+  });
+  
