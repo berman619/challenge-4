@@ -2,36 +2,15 @@
 
 ## Description
 
-## Screenshot
+As part of the Columbia Coding Boot Camp, I was tasked with creating a timed coding quiz on JavaScript fundamentals to implement learnings from the Web APIs unit. I developed a five-question quiz with a 60-second timer. The timer deducts 10 seconds for each incorrect answer. The website displays a message after each answer is submitted noting if it was correct or incorrect. Upon completion, the user is prompted to save their score to a high scores list, and that score is stored to local storage. 
+
+While completing this project, I referenced materials from the Columbia Coding Boot Camp, MDN Web Docs, W3Schools, JavaScript.info, and StackOverflow.
+
+## Screen Recording of Functionality
+
+![Screen Recording](/assets/images/ezgif-3-1c9c8ab3b1.gif)
 
 ## Deployed Application
 
-## User Story
-
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
-
-## Acceptance Criteria
-
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
-
-## Mock-Up
-
-The following animation demonstrates the application functionality:
-
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](/04-web-apis-homework-demo.gif)# challenge-4
+Link TBD
+Link TBD

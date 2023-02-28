@@ -97,11 +97,9 @@ const questions = [
   function checkAnswer(index) {
     if (index === questions[currentQuestion].correctAnswer) {
       document.getElementById("message").textContent = "Correct!";
-      document.getElementById("message").classList.add("correct");
       score++;
     } else {
       document.getElementById("message").textContent = "Incorrect!";
-      document.getElementById("message").classList.add("incorrect");
       timer -= 10;
     }
     currentQuestion++;
