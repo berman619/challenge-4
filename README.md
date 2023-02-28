@@ -12,5 +12,6 @@ While completing this project, I referenced materials from the Columbia Coding B
 
 ## Deployed Application
 
-Link TBD
-Link TBD
+GitHub repo: https://github.com/berman619/timed-coding-quiz
+
+Website Link: https://berman619.github.io/timed-coding-quiz 
