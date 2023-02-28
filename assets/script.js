@@ -97,9 +97,11 @@ const questions = [
   function checkAnswer(index) {
     if (index === questions[currentQuestion].correctAnswer) {
       document.getElementById("message").textContent = "Correct!";
+      document.getElementById("message").classList.add("correct");
       score++;
     } else {
       document.getElementById("message").textContent = "Incorrect!";
+      document.getElementById("message").classList.add("incorrect");
       timer -= 10;
     }
     currentQuestion++;
@@ -137,11 +139,9 @@ function endQuiz() {
         showHighScores(scores, initials);
         initialsForm.remove();
     });
+}
 
-    // function to display the list of high scores
-    
-  }
-
+// function to display the list of high scores    
   function showHighScores(scores, initials) {
     scores.sort((a, b) => b.score - a.score);
     let highScoresHtml = `<h1>High Scores</h1>`;
